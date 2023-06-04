@@ -1,0 +1,22 @@
+function:
+	-play with n other players (n is probably like 1024 or something idk)
+	-up to top 64 other boards are shown
+	-website starts to tetris game ready to start with default settings, gameplay config setup and invites are possible before start
+	-editing gameplay config changes gameplay config hash in realtime
+	-join other players games with invite links
+
+logic:
+	client/server network pipeline:
+		-user opens website
+		->server registers client with match and sends client board/user(name) details
+		->user starts match
+		->server sends client 14 bag of pieces, every 7 places another 7 bag is sent
+		->each placement/hold is verified against server's board/hold, if verification fails board/hold is set to whatever the server has
+		->other players' boards are updated as their board placements are verified on the server
+	data storage:
+		-active games are stored in memory
+
+architecture:
+	webpages consist of templates filled with functional restful view-modules
+		view modules are independently funcitoning on the client side, do something, and are meant to be placed widthin the template of a page
+		each view module will use some controller(s)'s restful api on the server side
