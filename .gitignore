@@ -24,7 +24,7 @@
 !.yamllint.yaml
 
 # === Rules for root dir ===
-/no-git
+/no-git/**
 /core
 /vgcore.*
 /v8*.log
